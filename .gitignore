@@ -1,0 +1,6 @@
+*.war
+*~
+/Servers
+/.metadata
+/RemoteSystemsTempFiles
+/CommonAttributes

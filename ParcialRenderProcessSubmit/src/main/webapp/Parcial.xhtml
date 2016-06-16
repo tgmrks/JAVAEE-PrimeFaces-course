@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+<!-- Instead refreshing all form to update data, ajax allow to update specific components -->
+
+	<h:form id="frm1">
+		<p:panelGrid columns="2" id="pnl">
+			<p:outputLabel value="Word" for="word"/>
+			<p:inputText id="word" value="#{invertStringBean.word}">
+				<p:ajax listener="#{invertStringBean.inverter}"
+					update=":frm2:invertedWord, :frm2:wordCount" event="keyup" />
+			</p:inputText>
+		</p:panelGrid>
+	</h:form>
+	
+	<br/>
+		
+	<h:form id="frm2">
+		<h:outputText value="#{invertStringBean.inverted}" id="invertedWord" />
+		<br/>
+		<h:outputText value="#{invertStringBean.countWord}" id="wordCount" />
+	</h:form>
+<!--  -->
+
+
+
+</h:body>
+</html>

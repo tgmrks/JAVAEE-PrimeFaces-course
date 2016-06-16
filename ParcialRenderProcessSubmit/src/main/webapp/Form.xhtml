@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+<!-- When the commandButton quest for login verification, only components indicated in 'process' tag 
+	will be processed. Avoiding, this way, other component validation -->
+
+<!-- But, one 'problem' that this aproach may have is that all data in the form is sent to server
+	although only indicated ones will be processed.  -->
+	
+<!-- In order to save process and network, one solution is to use the attribute 'parcialSubmit' to indicate
+	which component would be submited. Another solution is to configure 'partial submition' for all ajax components
+	in web.xml (check that out) -->
+
+	<h:form id="frm">
+		<p:messages autoUpdate="true" />
+	
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Login" for="login" />
+			<h:panelGroup>
+				<p:inputText id="login" value="#{formBean.login}" required="true"/>
+				<p:commandButton value="check login" 
+					action="#{formBean.checkLogin}"
+					process="login @this" />
+			</h:panelGroup>
+		
+			<p:outputLabel value="Name" for="name" />
+			<p:inputText id="name" value="#{formBean.name}" required="true"/>
+		</p:panelGrid>
+		
+		<p:commandButton value="Send" action="#{formBean.register}"/>
+	</h:form>
+
+</h:body>
+</html>

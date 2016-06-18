@@ -27,6 +27,32 @@
 		<!-- Using  'selectItens' you can provide a list programmatically -->
 		<p:commandButton value="Send!" action="#{formBean.register}" update="@form"/>		
 	</h:form>
+<br/><br/>	
+		
+		<h:form id="frm2">
+		<p:messages/>
+		
+		<p:panelGrid columns="2">
+
+			<p:outputLabel value="Continent" for="land"/>
+			<p:selectOneMenu id="land" required="true" value="#{formBean.land}">
+				<f:selectItem itemLabel="Select One" noSelectionOption="true"/>
+				<f:selectItems value="#{formBean.lands}" var="land"
+					itemLabel="#{land}" itemValue="#{land}"/>
+					<p:ajax event="change" process="@this" update="country"
+						listener="#{formBean.loadCountry}"/>
+			</p:selectOneMenu>
+			
+			<p:outputLabel value="Country" for="country"/>
+			<p:selectOneMenu id="country" required="true" value="#{formBean.country}">
+				<f:selectItem itemLabel="Select One" noSelectionOption="true"/>
+				<f:selectItems value="#{formBean.countries}" var="country"
+					itemLabel="#{country}" itemValue="#{country}"/>
+			</p:selectOneMenu>
+			
+		</p:panelGrid>
+		<p:commandButton value="Send!" action="#{formBean.register2}" update="@form"/>		
+	</h:form>
 
 </h:body>
 </html>

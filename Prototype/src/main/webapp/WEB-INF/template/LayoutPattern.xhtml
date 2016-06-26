@@ -10,9 +10,19 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title><ui:insert name="title">Prototype</ui:insert></title>
 		<h:outputStylesheet library="css" name="system.css" />
+		<h:outputScript library="js" name="jquery.maskMoney.js"/>
 	</h:head>
 	
 	<h:body>
+	
+		<p:ajaxStatus styleClass="ajax-status">
+			<f:facet name="start">
+				<h:graphicImage library="images" name="loading.gif"/>
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value=""/>
+			</f:facet>
+		</p:ajaxStatus>
 
 		<header>
 			<div>
@@ -22,9 +32,7 @@
 			</div>
 		</header>
 
-	</h:body>
-	
-	<div id="content">
+		<div id="content">
 			<ui:insert name="body"/>
 	</div>
 	
@@ -33,5 +41,19 @@
 	<footer>
 		JSF2 Prototype Project with PrimeFaces - 
 		<a href="http://primefaces.org/" target="_blank">primefaces.org</a>
-	</footer>	  
+	</footer>
+	
+	<!-- Use 'styleClass' in the component as in css class to activate the function above... 
+		currency css class does not need to exist in css file -->
+	<script>
+		function currencyConfig(){
+			$(".currency").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
+		}
+		
+		$(document).ready(funcion(){ 
+			currencyConfig();
+		});
+	</script>
+
+	</h:body>	  
 </html>

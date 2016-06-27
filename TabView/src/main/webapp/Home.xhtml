@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<!-- In ta 'Tab' use 'dynamic=true' to interact tab (get data from bean, e.g.) 
+		and 'cache=true' to limit this interaction to only one -->
+	<h:form id="frm1">
+		<p:tabView activeIndex="1" orientation="top" effect="fade" effectDuration="fast">
+			<p:tab title="Personal Data">
+				<h:panelGrid columns="2" cellpadding="4">
+                    <p:outputLabel value="Name" for="name"/>
+                    <p:inputText id="name" size="40" />
+
+                    <p:outputLabel value="E-mail" for="email"/>
+                    <p:inputText id="email" size="40" />
+
+                    <p:outputLabel value="Phone" for="phone"/>
+                    <p:inputText id="phone" size="15" />
+                </h:panelGrid>
+			</p:tab>
+			<p:tab title="Address">
+				<h:panelGrid columns="2" cellpadding="4">
+                    <p:outputLabel value="Street" for="street" />
+                    <p:inputText id="street" size="60" />
+
+                    <p:outputLabel value="Numeber" for="num" />
+                    <p:inputText id="num" size="10" />
+
+                    <p:outputLabel value="Neighborhood" for="neighborhood" />
+                    <p:inputText id="neighborhood" size="30" />
+
+                    <p:outputLabel value="City" for="city"/>
+                    <p:inputText id="city" size="30" />
+                </h:panelGrid>
+			</p:tab>
+			<p:tab title="Other" disabled="true">
+			</p:tab>
+		</p:tabView>
+	</h:form>
+	<h:form id="frm2">
+		<p:tabView activeIndex="1" orientation="left">
+			<p:tab title="Personal Data">
+				<h:panelGrid columns="2" cellpadding="4">
+                    <p:outputLabel value="Name" for="name2"/>
+                    <p:inputText id="name2" size="40" />
+
+                    <p:outputLabel value="E-mail" for="email2"/>
+                    <p:inputText id="email2" size="40" />
+
+                    <p:outputLabel value="Phone" for="phone2"/>
+                    <p:inputText id="phone2" size="15" />
+                </h:panelGrid>
+			</p:tab>
+			<p:tab title="Address">
+				<h:panelGrid columns="2" cellpadding="4">
+                    <p:outputLabel value="Street" for="street2" />
+                    <p:inputText id="street2" size="60" />
+
+                    <p:outputLabel value="Numeber" for="num2" />
+                    <p:inputText id="num2" size="10" />
+
+                    <p:outputLabel value="Neighborhood" for="neighborhood2" />
+                    <p:inputText id="neighborhood2" size="30" />
+
+                    <p:outputLabel value="City" for="city2"/>
+                    <p:inputText id="city2" size="30" />
+                </h:panelGrid>
+			</p:tab>
+		</p:tabView>
+	</h:form>
+	
+</h:body>
+</html>

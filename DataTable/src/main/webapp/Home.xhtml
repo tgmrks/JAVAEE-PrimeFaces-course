@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<!-- 'paginatorPosition' may be top, bottom or both -->
+	<h:form id="frm1">
+		<p:dataTable value="#{employeeBean.employees}" var="emp"
+			rows="15" paginator="true" paginatorPosition="bottom"
+			rowsPerPageTemplate="10,15,30,50">
+			<p:column headerText="Registration" style="text-align: center" width="150"
+				sortBy="#{emp.reg}">
+				<h:outputText value="#{emp.reg}"/>
+			</p:column>
+			<p:column headerText="Name"
+				sortBy="#{emp.name}">
+				<h:outputText value="#{emp.name}"/>
+			</p:column>
+			<p:column headerText="Hired" width="180" style="text-align: center"
+				sortBy="#{emp.dateHired}">
+				<h:outputText value="#{emp.dateHired}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Salary"  width="140" style="text-align: center"
+				sortBy="#{emp.salary}">
+				<h:outputText value="#{emp.salary}" style="text-align: right">
+					<f:convertNumber type="currency" locale="pt_BR"/>
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	
+</h:body>
+</html>

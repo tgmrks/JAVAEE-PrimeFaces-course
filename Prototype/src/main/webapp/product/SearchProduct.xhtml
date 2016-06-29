@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/template/LayoutPattern.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Search Product</ui:define>
+
+	<ui:define name="body">
+
+		<h:form>
+
+			<h1>Search Product</h1>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton id="search" value="Ssearch"
+						outcome="/product/SearchProduct" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="New" outcome="/product/RegisterProduct" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" style="width: 100%; margin-top: 20px"
+				columnClasses="label, field">
+				<p:outputLabel value="SKU" for="sku" />
+				<p:inputText id="sku" size="20" />
+
+				<p:outputLabel value="Name" for="name" />
+				<p:inputText id="name" size="60" maxlength="80" />
+			</p:panelGrid>
+			
+			<p:dataTable id="tableProducts" value="#{searchProductBean.filteredProducts}" var="product"
+				style="margin-top: 20px" emptyMessage="Any product was found!" rows="10" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				
+				<p:column headerText="SKU" style="text-align: center; width: 100px">
+					<h:outputText value="123"/>
+				</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="name test"/>
+				</p:column>
+				<p:column headerText="Category" style="width: 250px">
+					<h:outputText value="category test"/>
+				</p:column>
+				<p:column headerText="Unitary value" style="width: 120px; text-align: right">
+					<h:outputText value="R$ 100,00"/>
+				</p:column>
+				<p:column headerText="Stock" style="width: 100px; text-align: center">
+					<h:outputText value="99"/>
+				</p:column>
+				<p:column style="width: 100px; text-align: center">
+					<p:button icon="ui-icon-pencil" title="Edit"/>
+					<p:commandButton icon="ui-icon-trash" title="Delete"/>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

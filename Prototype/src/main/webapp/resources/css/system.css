@@ -69,3 +69,29 @@ h1 {
 	width: 35px;
 	height: 35px
 }
+
+.ui-selectmanycheckbox td label {
+	padding-right: 10px
+}
+
+.product-table input {
+	width: 100%
+}
+
+/* Custom TabView */
+.ui-tabs .ui-tabs-panel {
+    padding: 0.5em 0.2em !important;
+}
+
+.ui-tabs {
+    padding: 0px !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+    margin: -1px !important;
+}
+
+.ui-tabs.ui-tabs-top > .ui-tabs-nav {
+    padding: 0px !important;
+}
+/* Custom TabView */

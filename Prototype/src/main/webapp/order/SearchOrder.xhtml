@@ -1,0 +1,95 @@
+<ui:composition template="/WEB-INF/template/LayoutPattern.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">Search Order</ui:define>
+
+	<ui:define name="body">
+
+		<h:form>
+
+			<h1>Search Order</h1>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton id="search" value="Ssearch"
+						outcome="/product/SearchProduct" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="New" outcome="/order/SearchOrder" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" style="width: 100%; margin-top: 20px"
+				columnClasses="label, field">
+				<p:outputLabel value="Number" />
+				<h:panelGroup>
+					<p:inputText size="10" />
+					a
+					<p:inputText size="10" />
+				</h:panelGroup>
+			
+				<p:outputLabel value="Date Ordered" />
+				<h:panelGroup>
+					<p:calendar pattern="dd/MM/yyyy"/>
+					a
+					<p:calendar pattern="dd/MM/yyyy"/>
+				</h:panelGroup>
+			
+				
+			
+				<p:outputLabel value="Seller" />
+				<p:inputText size="40"/>
+				
+				<p:outputLabel value="Client" />
+				<p:inputText size="40"/>
+				
+				<p:outputLabel value="Status" />
+				<p:selectManyCheckbox>
+					<f:selectItem itemLabel="Budget"/>
+					<f:selectItem itemLabel="Issued"/>
+					<f:selectItem itemLabel="Canceled"/>
+				</p:selectManyCheckbox>
+				
+			</p:panelGrid>
+			
+			<p:dataTable id="tableOrders" value="#{searchOrderBean.filteredOrders}" var="order"
+				style="margin-top: 20px" emptyMessage="Any order was found!" 
+				rows="10" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				
+				<p:column headerText="Number" style="text-align: center; width: 100px">
+					<h:outputText value="1234"/>					
+				</p:column>
+				<p:column headerText="Client" >
+					<h:outputText value="Client test"/>					
+				</p:column>
+				
+				<p:column headerText="Seller" >
+					<h:outputText value="Seller test"/>					
+				</p:column>
+				
+				<p:column headerText="Date Ordered" style="text-align: center; width: 140px">
+					<h:outputText value="01/01/2016"/>					
+				</p:column>
+				
+				<p:column headerText="Total value" style="text-align: left; width: 120px">
+					<h:outputText value="R$ 9.999,99"/>					
+				</p:column>
+				
+				<p:column headerText="Status" style="width: 100px">
+					<h:outputText value="Issued"/>
+				</p:column>					
+				
+				<p:column style="width: 50px; text-align: center">
+					<p:button icon="ui-icon-pencil" title="Edit"/>
+				</p:column>
+				
+			</p:dataTable>
+		
+		</h:form>
+	</ui:define>
+
+</ui:composition>

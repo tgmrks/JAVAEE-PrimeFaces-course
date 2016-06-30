@@ -1,0 +1,36 @@
+<ui:composition template="/WEB-INF/template/LayoutPattern.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">New Order</ui:define>
+		
+	<ui:define name="body">
+		<h:form>
+			<h1>New Order</h1>
+
+			<ui:include src="/WEB-INF/template/order/orderButtons.xhtml"/>
+			
+			<ui:include src="/WEB-INF/template/order/orderFront.xhtml"/>
+			
+			<p:tabView style="margin-top: 20px">
+				<p:tab title="Item">
+					<ui:include src="/WEB-INF/template/order/orderItens.xhtml"/>
+				</p:tab>
+				
+				<p:tab title="Shipment">
+					<ui:include src="/WEB-INF/template/order/orderShipment.xhtml"/>
+				</p:tab>
+				
+				<p:tab title="Notes">
+					<ui:include src="/WEB-INF/template/order/orderNotes.xhtml"/>
+				</p:tab>
+			</p:tabView>			
+			
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

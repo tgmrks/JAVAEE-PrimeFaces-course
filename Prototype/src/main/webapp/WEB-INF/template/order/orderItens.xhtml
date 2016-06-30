@@ -1,0 +1,44 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<p:dataTable value="RegisterOrderBean.itens" var="item">
+		<p:column headerText="SKU" style="text-align: center; width: 100px" >
+			<p:inputText size="8"/>
+		</p:column>
+		
+		<p:column headerText="Product">
+			<p:autoComplete style="width: 99%"/>
+		</p:column>
+		
+		<p:column headerText="Unitary value" style="text-align: right; width: 120px">
+			<h:outputText value="R$ 0,00"/>
+		</p:column>
+		
+		<p:column headerText="Quantity" style="text-align: center; width: 100px" >
+			<h:inputText value="0" size="8" />
+		</p:column>
+		
+		<p:column headerText="Stock" style="text-align: center; width: 100px" >
+			<h:outputText value="0"/>
+		</p:column>
+		
+		<p:column headerText="Total value" style="text-align: right; width: 100px" >
+			<h:outputText value="R$ 0,00"/>
+		</p:column>
+		
+		<p:columnGroup type="footer">
+			<p:row>
+				<p:column colspan="5" footerText="Subtotal" style="text-align: right"/>
+				<p:column footerText="R$ 0,00" style="text-align: right">
+					
+				</p:column>
+			</p:row>
+		</p:columnGroup>
+		
+	</p:dataTable>		
+		
+</ui:composition>

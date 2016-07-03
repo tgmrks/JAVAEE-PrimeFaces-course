@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+		<h:form>
+		<p:menubar>
+			<p:submenu label="Profile">
+				<p:menuitem value="My Data"/>
+				<p:menuitem value="My Settings"/>
+				<p:separator/>
+				<p:menuitem value="Common Settings"/>				
+			</p:submenu>
+			
+			<p:submenu label="Sites">
+				<p:submenu label="Search engine">
+					<p:menuitem value="Google" url="https://www.google.com.br" target="blank" icon="ui-icon-search"/>
+					<p:menuitem value="Bing" url="https://www.bing.com/" target="blank" icon="ui-icon-search"/>
+				</p:submenu>
+				<p:submenu label="Videos">
+					<p:menuitem value="Youtube" url="https://www.youtube.com" target="blank" icon="ui-icon-video"/>
+					<p:menuitem value="Vimeo" url="https://vimeo.com" target="blank" icon="ui-icon-video"/>	
+				</p:submenu>
+				<p:submenu label="Social Media">
+					<p:menuitem value="Facebook" icon="ui-thumbs-o-up"/>
+					<p:menuitem value="Instagram" icon="ui-camera-retro"/>	
+				</p:submenu>
+				<p:separator/> 	
+				<p:menuitem value="Wikipedia" url="https://en.wikipedia.org" target="blank"/>
+				
+			</p:submenu>
+		
+		</p:menubar>
+	</h:form>
+	
+</h:body>
+</html>

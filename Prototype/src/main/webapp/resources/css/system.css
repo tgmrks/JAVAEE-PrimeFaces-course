@@ -95,3 +95,19 @@ h1 {
     padding: 0px !important;
 }
 /* Custom TabView */
+
+/* Custom menu */
+.menu-system {
+    border: 0px !important;
+    padding: 0px !important;
+    background: none !important;
+}
+
+.menu-system .ui-menu-parent > a .ui-menuitem-text, .menu-sistema > .ui-menu-list > .ui-menuitem > a > .ui-menuitem-text {
+    color: #ffffff !important;
+}
+
+.menu-system .ui-icon-triangle-1-s {
+    background: url(#{resource['images:arrow-down.png']}) no-repeat;
+}
+/* Custom menu end */

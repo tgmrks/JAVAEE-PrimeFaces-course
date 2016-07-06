@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>Qualifier</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+
+<!-- UTF-8 Pattern -->
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+
+
+
+<dependencies>
+		<!-- Mojarra (JSF 2) -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.2.13</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- PrimeFaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.0</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- Weld (CDI implementation) -->
+		
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet-core</artifactId>
+			<version>2.3.5.Final</version>
+			<scope>compile</scope>
+		</dependency>
+  
+</dependencies>
+
+<repositories>
+		<!-- Repo for PrimeFaces dependency -->
+		<repository>  
+    			<id>prime-repo</id>  
+   			 <name>PrimeFaces Maven Repository</name>  
+    			<url>http://repository.primefaces.org</url>  
+    			<layout>default</layout>  
+		</repository> 
+</repositories>
+  
+</project>

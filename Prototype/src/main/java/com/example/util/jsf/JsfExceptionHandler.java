@@ -12,6 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 import javax.faces.event.ExceptionQueuedEventContext;
 
+import com.example.service.BusinessRuleExpection;
+
+
 public class JsfExceptionHandler extends ExceptionHandlerWrapper {
 
 	private ExceptionHandler wrapped;
@@ -34,17 +37,39 @@ public class JsfExceptionHandler extends ExceptionHandlerWrapper {
 			ExceptionQueuedEventContext context = (ExceptionQueuedEventContext) event.getSource();
 			
 			Throwable exception = context.getException();
+			BusinessRuleExpection businessException = getBusinessRuleExpection(exception);
+			
+			boolean handled = false;
 			
 			try {
 				if (exception instanceof ViewExpiredException) {
+					handled = true;
 					redirect("/");
+				} else if (businessException != null) {
+					handled = true;
+					FacesUtil.addErrorMessage(businessException.getMessage());
+				} else {
+					handled = true;
+					redirect("/Error.xhtml");
 				}
 			} finally {
-				events.remove();
+				if (handled) {
+					events.remove();
+				}
 			}
 		}
 		
 		getWrapped().handle();
+	}
+	
+	private BusinessRuleExpection getBusinessRuleExpection(Throwable exception) {
+		if (exception instanceof BusinessRuleExpection) {
+			return (BusinessRuleExpection) exception;
+		} else if (exception.getCause() != null) {
+			return getBusinessRuleExpection(exception.getCause());
+		}
+		
+		return null;
 	}
 	
 	private void redirect(String page) {

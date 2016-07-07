@@ -7,6 +7,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import com.example.service.BusinessRuleExpection;
+
 @ManagedBean
 @RequestScoped
 public class RegisterOrderBean {
@@ -20,6 +22,10 @@ public class RegisterOrderBean {
 
 	public List<Integer> getItens() {
 		return itens;
+	}
+	
+	public void save(){
+		throw new BusinessRuleExpection("testing123");
 	}
 	
 }

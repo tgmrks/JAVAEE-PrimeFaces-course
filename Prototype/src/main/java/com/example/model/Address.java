@@ -2,13 +2,17 @@ package com.example.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name="address")
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,6 +36,7 @@ public class Address implements Serializable {
 		this.id = id;
 	}
 	
+	@Column(nullable=false, length=150)
 	public String getAddress() {
 		return address;
 	}
@@ -40,6 +45,7 @@ public class Address implements Serializable {
 		this.address = address;
 	}
 
+	@Column(nullable=false, length=20)
 	public String getNum() {
 		return num;
 	}
@@ -48,6 +54,7 @@ public class Address implements Serializable {
 		this.num = num;
 	}
 
+	@Column(length=150)
 	public String getComplement() {
 		return complement;
 	}
@@ -56,6 +63,7 @@ public class Address implements Serializable {
 		this.complement = complement;
 	}
 
+	@Column(nullable=false, length=60)
 	public String getCity() {
 		return city;
 	}
@@ -64,6 +72,7 @@ public class Address implements Serializable {
 		this.city = city;
 	}
 
+	@Column(nullable=false, length=60)
 	public String getState() {
 		return state;
 	}
@@ -72,6 +81,7 @@ public class Address implements Serializable {
 		this.state = state;
 	}
 
+	@Column(nullable=false, length=9)
 	public String getZip() {
 		return zip;
 	}
@@ -81,6 +91,7 @@ public class Address implements Serializable {
 	}
 
 	@ManyToOne
+	@JoinColumn(name="client_id", nullable=false)
 	public Client getClient() {
 		return client;
 	}

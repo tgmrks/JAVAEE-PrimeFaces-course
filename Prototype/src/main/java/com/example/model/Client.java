@@ -5,13 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name="client")
 public class Client implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +38,7 @@ public class Client implements Serializable {
 		this.id = id;
 	}
 	//When you don't specify Table or Column it means the names are the same in code and bd
+	@Column(nullable=false, length=100)
 	public String getName() {
 		return name;
 	}
@@ -40,7 +46,7 @@ public class Client implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	@Column(nullable=false, length=255)
 	public String getEmail() {
 		return email;
 	}
@@ -48,7 +54,7 @@ public class Client implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getDocument() {
 		return document;
 	}
@@ -57,6 +63,8 @@ public class Client implements Serializable {
 		this.document = document;
 	}
 
+	@Enumerated(EnumType.STRING)//Pass the name of the constant instead of the enumeration
+	@Column(nullable=false, length=10)
 	public PersonType getType() {
 		return type;
 	}

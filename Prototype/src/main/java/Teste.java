@@ -18,23 +18,23 @@ public class Teste {
 		EntityTransaction trx = manager.getTransaction();
 		trx.begin();
 		
-		Client client = new Client();
-		client.setName("John Doe  II");
-		client.setEmail("john.doe@test.com");
-		client.setDocument("123.456.789-12");
-		client.setType(PersonType.NATURAL);
-		
-		Address address = new Address();
-		address.setAddress("1st Street");
-		address.setNum("1024");
-		address.setCity("Campinas");
-		address.setState("SP");
-		address.setZip("15000-000");
-		address.setClient(client);
-		
-		client.getAddresses().add(address);
-		
-		manager.persist(client);
+//		Client client = new Client();
+//		client.setName("John Doe  II");
+//		client.setEmail("john.doe@test.com");
+//		client.setDocument("123.456.789-12");
+//		client.setType(PersonType.NATURAL);
+//		
+//		Address address = new Address();
+//		address.setAddress("1st Street");
+//		address.setNum("1024");
+//		address.setCity("Campinas");
+//		address.setState("SP");
+//		address.setZip("15000-000");
+//		address.setClient(client);
+//		
+//		client.getAddresses().add(address);
+//		
+//		manager.persist(client);
 		
 		trx.commit();
 	}

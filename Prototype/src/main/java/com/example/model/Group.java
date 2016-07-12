@@ -2,6 +2,14 @@ package com.example.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_group")
 public class Group implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -9,12 +17,17 @@ public class Group implements Serializable{
 	private Long id;
 	private String name;
 	private String description;
+	
+	@Id
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	@Column(nullable=false, length=40)
 	public String getName() {
 		return name;
 	}

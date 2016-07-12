@@ -2,6 +2,16 @@ package com.example.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_order_item")
 public class OrderItem implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -12,24 +22,34 @@ public class OrderItem implements Serializable{
 	private Product product;
 	private Order order;
 	
+	@Id
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	@Column(nullable=false, length=3)
 	public Integer getQtd() {
 		return qtd;
 	}
+	
 	public void setQtd(Integer qtd) {
 		this.qtd = qtd;
 	}
+	
+	@Column(name="unit_value", nullable=false, precision=10, scale=2)
 	public Double getUnitValue() {
 		return unitValue;
 	}
 	public void setUnitValue(Double unitValue) {
 		this.unitValue = unitValue;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="product_id", nullable=false)
 	public Product getProduct() {
 		return product;
 	}
@@ -37,12 +57,15 @@ public class OrderItem implements Serializable{
 		this.product = product;
 	}
 		
+	@ManyToOne
+	@JoinColumn(name="order_id",nullable=false)
 	public Order getOrder() {
 		return order;
 	}
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

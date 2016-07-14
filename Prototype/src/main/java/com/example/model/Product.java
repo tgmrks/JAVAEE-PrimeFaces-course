@@ -10,6 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="t_product")
@@ -33,6 +39,7 @@ public class Product implements Serializable{
 		this.id = id;
 	}
 	
+	@NotBlank @Size(max=80) 
 	@Column(nullable = false, length = 80)
 	public String getName() {
 		return name;
@@ -41,6 +48,7 @@ public class Product implements Serializable{
 		this.name = name;
 	}
 	
+	@NotBlank
 	@Column(nullable = false, length = 20, unique = true)
 	public String getSku() {
 		return sku;
@@ -49,6 +57,7 @@ public class Product implements Serializable{
 		this.sku = sku;
 	}
 	
+	@NotNull
 	@Column(name="unit_value", nullable = false, precision = 10, scale = 2)
 	public Double getUnitValue() {
 		return unitValue;
@@ -57,6 +66,8 @@ public class Product implements Serializable{
 		this.unitValue = unitValue;
 	}
 	
+	//bc of this annotation, it won't be necessary to add 'required' to the component 'InputText'
+	@NotNull @Min(0) @Max(9999)
 	@Column(name="qtd_stock", nullable = false, length = 5)
 	public Integer getQtdStock() {
 		return qtdStock;
@@ -65,6 +76,7 @@ public class Product implements Serializable{
 		this.qtdStock = qtdStock;
 	}
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	public Category getCategory() {

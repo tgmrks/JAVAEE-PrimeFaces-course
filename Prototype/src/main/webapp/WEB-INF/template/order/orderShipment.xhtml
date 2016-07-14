@@ -8,28 +8,29 @@
 	<p:panelGrid columns="4" style="width: 100%" columnClasses="label, field, label, field">
 		
 		<p:outputLabel value="Deliver date" for="deliverDate" />
-		<p:calendar id="deliverDate" size="10" pattern="dd/MM/yyyy" />
+		<p:calendar id="deliverDate" size="10" pattern="dd/MM/yyyy" 
+			value="#{registerOrderBean.order.deliveredDate}"/>
 		
 		<p:spacer />
 		<p:spacer />
 	
         <p:outputLabel value="Address" for="Address" />
-        <p:inputText id="Address" size="50" />
+        <p:inputText id="Address" size="50" value="#{registerOrderBean.order.deliverAddress.address}"/>
 
         <p:outputLabel value="Number" for="shipNum" />
-        <p:inputText id="shipNum" size="5" />
+        <p:inputText id="shipNum" size="5" value="#{registerOrderBean.order.deliverAddress.num}"/>
 
         <p:outputLabel value="Address Complement" for="addressComp" />
-        <p:inputText id="addressComp" size="50" />
+        <p:inputText id="addressComp" size="50" value="#{registerOrderBean.order.deliverAddress.complement}"/>
 
         <p:outputLabel value="City" for="city" />
-        <p:inputText id="city" size="20" />
+        <p:inputText id="city" size="20" value="#{registerOrderBean.order.deliverAddress.city}"/>
 
         <p:outputLabel value="State" for="state" />
-        <p:inputText id="state" size="20" />
+        <p:inputText id="state" size="20" value="#{registerOrderBean.order.deliverAddress.state}"/>
 
         <p:outputLabel value="ZIP Code" for="zip" />
-        <p:inputText id="zip" size="10" />
+        <p:inputText id="zip" size="10" value="#{registerOrderBean.order.deliverAddress.zip}"/>
 		
 	</p:panelGrid>	
 		

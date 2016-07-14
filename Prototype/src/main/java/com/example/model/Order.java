@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="t_order")
@@ -31,8 +32,8 @@ public class Order implements Serializable{
 	private Date createDate;
 	private String notes;
 	private Date deliveredDate;
-	private Double shipimentValue;
-	private Double descountValue;
+	private Double shipmentValue;
+	private Double discountValue;
 	private Double totalValue;
 	private StatusOrder status;
 	private PaymentForm paymentForm;
@@ -50,6 +51,7 @@ public class Order implements Serializable{
 		this.id = id;
 	}
 	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="create_date", nullable=false)
 	public Date getCreateDate() {
@@ -67,6 +69,7 @@ public class Order implements Serializable{
 		this.notes = notes;
 	}
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="delivered_date", nullable=false)	
 	public Date getDeliveredDate() {
@@ -76,22 +79,25 @@ public class Order implements Serializable{
 		this.deliveredDate = deliveredDate;
 	}
 	
+	@NotNull
 	@Column(name="ship_value", nullable=false, precision=10, scale=2)
-	public Double getShipimentValue() {
-		return shipimentValue;
+	public Double getShipmentValue() {
+		return shipmentValue;
 	}
-	public void setShipimentValue(Double shipimentValue) {
-		this.shipimentValue = shipimentValue;
+	public void setShipmentValue(Double shipimentValue) {
+		this.shipmentValue = shipimentValue;
 	}
 	
+	@NotNull
 	@Column(name="desc_value", nullable=false, precision=10, scale=2)
-	public Double getDescountValue() {
-		return descountValue;
+	public Double getDiscountValue() {
+		return discountValue;
 	}
-	public void setDescountValue(Double descountValue) {
-		this.descountValue = descountValue;
+	public void setDiscountValue(Double descountValue) {
+		this.discountValue = descountValue;
 	}
 	
+	@NotNull
 	@Column(name="total_value", nullable=false, precision=10, scale=2)
 	public Double getTotalValue() {
 		return totalValue;
@@ -100,6 +106,7 @@ public class Order implements Serializable{
 		this.totalValue = totalValue;
 	}
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name="status", nullable=false, length=15)
 	public StatusOrder getStatus() {
@@ -109,6 +116,7 @@ public class Order implements Serializable{
 		this.status = status;
 	}
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name="pay_form", nullable=false, length=20)
 	public PaymentForm getPaymentForm() {
@@ -118,6 +126,7 @@ public class Order implements Serializable{
 		this.paymentForm = paymentForm;
 	}
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="seller_id", nullable=false)
 	public User getSeller() {
@@ -127,6 +136,7 @@ public class Order implements Serializable{
 		this.seller = seller;
 	}
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="client_id", nullable=false)
 	public Client getClient() {

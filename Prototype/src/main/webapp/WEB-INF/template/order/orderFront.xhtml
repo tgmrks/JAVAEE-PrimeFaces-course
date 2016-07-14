@@ -7,40 +7,50 @@
 
 	<p:panelGrid columns="4" style="width: 100%; margin-top: 20px" columnClasses="label, field, label, field">
 		<p:outputLabel value="Number"/>
-		<h:outputText value="1234"/>
+		<h:outputText value="#{registerOrderBean.order.id}"/>
 		
 		<p:outputLabel value="Creation Date" />
-        <h:outputText value="08/06/2013" />
+        <h:outputText value="#{registerOrderBean.order.createDate}" >
+        	<f:convertDateTime pattern="dd/MM/yyyy"/>
+        </h:outputText>
         
         <p:outputLabel value="Status"/>
-        <h:outputText value="Orçamento" />
+        <h:outputText value="#{registerOrderBean.order.status}" />
         
         <p:outputLabel value="Seller" for="seller"/>
-        <p:selectOneMenu id="seller">
+        <p:selectOneMenu id="seller" value="#{registerOrderBean.order.seller}">
             <f:selectItem itemLabel="Select one" />
             <f:selectItem itemLabel="João das Couves Júnior" />
         </p:selectOneMenu>
         
         <p:outputLabel value="Client" for="client"/>
-        <p:autoComplete id="client" size="40" dropdown="true" />
+        <p:autoComplete id="client" size="40" dropdown="true" 
+        	value="#{registerOrderBean.order.client}"/>
         
     	<p:outputLabel value="Payment type" for="payment"/>
-        <p:selectOneMenu id="payment">
+        <p:selectOneMenu id="payment" value="#{registerOrderBean.order.paymentForm}">
             <f:selectItem itemLabel="Select one" />
             <f:selectItem itemLabel="Credit Card" />
         </p:selectOneMenu>
         
         <p:outputLabel value="Shipping" for="shipping"/>
-        <p:inputText id="shipping" size="10" maxlength="10" />
+        <p:inputText id="shipping" size="10" maxlength="10" value="#{registerOrderBean.order.shipmentValue}">
+        	<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+        </p:inputText>
         
         <p:outputLabel value="Subtotal" style="font-weight: bold"/>
         <h:outputText value="R$ 0,00" style="font-weight: bold" id="subtotal" />
         
         <p:outputLabel value="Discount" for="discount"/>
-        <p:inputText id="discount" size="10" maxlength="10" />
+        <p:inputText id="discount" size="10" maxlength="10" value="#{registerOrderBean.order.discountValue}">
+        	<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+        </p:inputText>
         
         <p:outputLabel value="Total order" style="font-weight: bold; font-size: 1.1em"/>
-        <h:outputText value="R$ 0,00" style="font-weight: bold; font-size: 1.1em" id="totalOrder" />
+        <h:outputText value="#{registrationOrderBean.totalValue}" 
+        	style="font-weight: bold; font-size: 1.1em" id="totalOrder">
+        	<f:convertNumber type="currency" />
+        </h:outputText>
 	</p:panelGrid>
 		
 		

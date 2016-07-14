@@ -57,7 +57,7 @@ public class Product implements Serializable{
 		this.sku = sku;
 	}
 	
-	@NotNull
+	@NotNull(message="must be filled")
 	@Column(name="unit_value", nullable = false, precision = 10, scale = 2)
 	public Double getUnitValue() {
 		return unitValue;

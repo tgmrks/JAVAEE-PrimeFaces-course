@@ -46,8 +46,8 @@ public class TesteOrder {
 		order.setPaymentForm(PaymentForm.CREDIT_CARD);
 		order.setNotes("Open up to 18h");
 		order.setStatus(StatusOrder.BUDGET);
-		order.setDescountValue(0.0);
-		order.setShipimentValue(0.0);
+		order.setDiscountValue(0.0);
+		order.setShipmentValue(0.0);
 		order.setTotalValue(0.0);
 		order.setSeller(seller);
 		order.setDeliverAddress(deliverAdd);

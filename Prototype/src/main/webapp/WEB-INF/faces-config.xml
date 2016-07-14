@@ -5,6 +5,14 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
     
+    <application>
+    	<message-bundle>com.example.Messages</message-bundle>
+    
+    	<locale-config>
+    		<default-locale>en</default-locale>
+    	</locale-config>
+    </application>
+    
     <factory>
     	<exception-handler-factory>com.example.util.jsf.JsfExceptionHandlerFactory</exception-handler-factory>
     </factory>

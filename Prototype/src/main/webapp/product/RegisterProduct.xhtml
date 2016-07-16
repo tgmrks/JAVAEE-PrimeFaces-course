@@ -8,6 +8,13 @@
 	<ui:define name="title">New Product</ui:define>
 		
 	<ui:define name="body">
+	<!-- Runs before page is rendered
+		sometimes it's better to fetch data here when page is created other than in class constructor, 
+			where it would be called everytime a object is created -->
+	<f:metadata>
+		<f:event listener="#{registerProductBean.init}" type="preRenderView"/>
+	</f:metadata>
+	
 		<h:form>
 			<h1>New Product</h1>
 
@@ -34,6 +41,8 @@
 				<p:outputLabel value="Category" for="category" />
 				<p:selectOneMenu id="category">
 					<f:selectItem itemLabel="Select category"/>
+					<f:selectItems value="#{registerProductBean.categoriesRoot}" var="category"
+						itemValue="#{category}" itemLabel="#{category.description}"/>
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Subcategory" for="subcategory" />

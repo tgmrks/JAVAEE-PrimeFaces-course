@@ -39,7 +39,7 @@
 				<p:inputText id="name" size="60" maxlength="80" value="#{registerProductBean.product.name}"/>
 
 				<p:outputLabel value="Category" for="category" />
-				<p:selectOneMenu id="category">
+				<p:selectOneMenu id="category" value="#{registerProductBean.categoryFather}">
 					<f:selectItem itemLabel="Select category"/>
 					<f:selectItems value="#{registerProductBean.categoriesRoot}" var="category"
 						itemValue="#{category}" itemLabel="#{category.description}"/>

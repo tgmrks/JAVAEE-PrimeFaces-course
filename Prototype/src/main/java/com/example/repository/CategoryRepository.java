@@ -8,15 +8,19 @@ import javax.persistence.EntityManager;
 
 import com.example.model.Category;
 
-public class categoryRepository implements Serializable{
+public class CategoryRepository implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	private EntityManager manager;
 	
 	public List<Category> listCategories(){       //That's not the name of your table, but your class
 		return manager.createQuery("from Category", Category.class).getResultList();
 	}
+	
+	public Category byId(Long id){      
+		return manager.find(Category.class, id);
+	} 
 
 }

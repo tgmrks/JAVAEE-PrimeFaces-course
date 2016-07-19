@@ -11,10 +11,11 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.validation.constraints.NotNull;
 
 import com.example.model.Category;
 import com.example.model.Product;
-import com.example.repository.categoryRepository;
+import com.example.repository.CategoryRepository;
 
 @Named
 @ViewScoped
@@ -23,9 +24,10 @@ public class RegisterProductBean implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	
 	@Inject //will call a producer that you may configure (refer to: 'com.example.util.jpa.EntityManagerProducer')
-	private categoryRepository categoryRepository;
-	private Product product;
+	private CategoryRepository categoryRepository;
 	
+	private Product product;
+	private Category categoryFather; 
 	private List<Category> categoriesRoot = new ArrayList<>();
 	
 	public RegisterProductBean(){
@@ -33,7 +35,7 @@ public class RegisterProductBean implements Serializable {
 	}
 	
 	public void save(){
-		//throw new RuntimeException("testing");
+		System.out.println("Categoria pai selecionada: " + categoryFather.getDescription());
 	}
 	
 	public void init(){								
@@ -58,6 +60,15 @@ public class RegisterProductBean implements Serializable {
 
 	public List<Category> getCategoriesRoot() {
 		return categoriesRoot;
+	}
+
+	@NotNull
+	public Category getCategoryFather() {
+		return categoryFather;
+	}
+
+	public void setCategoryFather(Category categoryFather) {
+		this.categoryFather = categoryFather;
 	}
 	
 }

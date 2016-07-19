@@ -14,6 +14,7 @@ import javax.persistence.Persistence;
 
 import com.example.model.Category;
 import com.example.model.Product;
+import com.example.repository.categoryRepository;
 
 @Named
 @ViewScoped
@@ -22,7 +23,7 @@ public class RegisterProductBean implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	
 	@Inject //will call a producer that you may configure (refer to: 'com.example.util.jpa.EntityManagerProducer')
-	private EntityManager manager;
+	private categoryRepository categoryRepository;
 	private Product product;
 	
 	private List<Category> categoriesRoot = new ArrayList<>();
@@ -43,8 +44,8 @@ public class RegisterProductBean implements Serializable {
 		//Create a class with 'ApplicationScoped' to handle only one time     //Persistence-unit name
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("OrderOU");
 		*/
-							//That's not the name of your table, but your class	
-		categoriesRoot = manager.createQuery("from Category", Category.class).getResultList();
+								
+		categoriesRoot = categoryRepository.listCategories();
 	}
 
 	public Product getProduct() {

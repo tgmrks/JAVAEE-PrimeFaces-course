@@ -79,7 +79,7 @@ public class Product implements Serializable{
 		this.qtdStock = qtdStock;
 	}
 	
-	//@NotNull
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	public Category getCategory() {

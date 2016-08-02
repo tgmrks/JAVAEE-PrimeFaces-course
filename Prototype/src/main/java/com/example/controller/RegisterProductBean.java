@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import com.example.model.Category;
 import com.example.model.Product;
 import com.example.repository.CategoryRepository;
+import com.example.util.jsf.FacesUtil;
 
 @Named
 @ViewScoped
@@ -29,6 +30,7 @@ public class RegisterProductBean implements Serializable {
 	private Product product;
 	private Category categoryFather; 
 	private List<Category> categoriesRoot = new ArrayList<>();
+	private List<Category> subcategory = new ArrayList<>();
 	
 	public RegisterProductBean(){
 		product = new Product(); 
@@ -36,6 +38,7 @@ public class RegisterProductBean implements Serializable {
 	
 	public void save(){
 		System.out.println("Categoria pai selecionada: " + categoryFather.getDescription());
+		System.out.println("Subategoria selecionada: " + product.getCategory().getDescription());
 	}
 	
 	public void init(){								
@@ -46,9 +49,18 @@ public class RegisterProductBean implements Serializable {
 		//Create a class with 'ApplicationScoped' to handle only one time     //Persistence-unit name
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("OrderOU");
 		*/
-								
-		categoriesRoot = categoryRepository.listCategories();
+					
+		if(FacesUtil.isNotPostback()){
+			categoriesRoot = categoryRepository.listCategories();
+		}
+	
 	}
+	
+	public void loadSubcategory(){
+		System.out.println("categoryFather: " + categoryFather.getId() + " - " + categoryFather.getDescription());
+		subcategory = categoryRepository.subcategoriesOf(categoryFather);
+	}
+	
 
 	public Product getProduct() {
 		return product;
@@ -70,5 +82,14 @@ public class RegisterProductBean implements Serializable {
 	public void setCategoryFather(Category categoryFather) {
 		this.categoryFather = categoryFather;
 	}
+
+	public List<Category> getSubCategory() {
+		return subcategory;
+	}
+
+	public void setSubCategory(List<Category> subcategory) {
+		this.subcategory = subcategory;
+	}
+	
 	
 }

@@ -43,11 +43,14 @@
 					<f:selectItem itemLabel="Select category"/>
 					<f:selectItems value="#{registerProductBean.categoriesRoot}" var="category"
 						itemValue="#{category}" itemLabel="#{category.description}"/>
+						<p:ajax listener="#{registerProductBean.loadSubcategory}" update="subcategory"/>
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Subcategory" for="subcategory" />
 				<p:selectOneMenu id="subcategory" value="#{registerProductBean.product.category}">
 					<f:selectItem itemLabel="Select subcategory" />
+					<f:selectItems value="#{registerProductBean.subCategory}" var="subcategory"
+						itemValue="#{subCategory}" itemLabel="#{subcategory.description}"/>
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Unitary value" for="unitaryValue" />

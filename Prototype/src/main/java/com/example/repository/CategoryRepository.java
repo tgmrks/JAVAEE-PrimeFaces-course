@@ -16,8 +16,13 @@ public class CategoryRepository implements Serializable{
 	private EntityManager manager;
 	
 	public List<Category> listCategories(){       //That's not the name of your table, but your class
-		return manager.createQuery("from Category", Category.class).getResultList();
+		return manager.createQuery("from Category where categoryFather is null", Category.class).getResultList();
 	}
+	
+	public List<Category> subcategoriesOf(Category categoryFather){
+		return manager.createQuery("from Category where categoryFather = :root", 
+				Category.class).setParameter("root", categoryFather).getResultList();
+	}	
 	
 	public Category byId(Long id){      
 		return manager.find(Category.class, id);

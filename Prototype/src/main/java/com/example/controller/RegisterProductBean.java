@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import com.example.model.Category;
 import com.example.model.Product;
 import com.example.repository.CategoryRepository;
+import com.example.service.registerProductService;
 import com.example.util.jsf.FacesUtil;
 
 @Named
@@ -27,18 +28,28 @@ public class RegisterProductBean implements Serializable {
 	@Inject //will call a producer that you may configure (refer to: 'com.example.util.jpa.EntityManagerProducer')
 	private CategoryRepository categoryRepository;
 	
+	@Inject
+	private registerProductService registerProductService;
+	
 	private Product product;
 	private Category categoryFather; 
 	private List<Category> categoriesRoot = new ArrayList<>();
 	private List<Category> subcategory = new ArrayList<>();
 	
 	public RegisterProductBean(){
-		product = new Product(); 
+		clear(); 
 	}
 	
 	public void save(){
-		System.out.println("Categoria pai selecionada: " + categoryFather.getDescription());
-		System.out.println("Subategoria selecionada: " + product.getCategory().getDescription());
+		product = registerProductService.save(product);
+		clear();
+		FacesUtil.addInfoMessage("Product successfuly saved!");
+	}
+	
+	private void clear(){
+		product = new Product();
+		categoryFather = null;
+		subcategory = new ArrayList<>();
 	}
 	
 	public void init(){								

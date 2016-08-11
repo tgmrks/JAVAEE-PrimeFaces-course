@@ -10,9 +10,12 @@ import javax.persistence.NoResultException;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.apache.commons.lang3.StringUtils;
 
-import antlr.StringUtils;
-
+import com.example.filter.ProductFilter;
 import com.example.model.Category;
 import com.example.model.Product;
 
@@ -38,17 +41,19 @@ public class ProductRepository implements Serializable{
 	}
 	
 	
-	/*
 	@SuppressWarnings("unchecked")
 	public List<Product> filtered(ProductFilter filter){
 		
 		Session session = manager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Product.class);
 		
-		if(StringUtils.isNotBlank())
+		if(StringUtils.isNotBlank(filter.getSku()))
+			criteria.add(Restrictions.eq("sku", filter.getSku()));
 		
-		return null;
+		if(StringUtils.isNotBlank(filter.getName()))
+			criteria.add(Restrictions.ilike("name", filter.getName(), MatchMode.ANYWHERE));
+		
+		return criteria.addOrder(Order.asc("name")).list();
 	}
-	*/
 
 }

@@ -12,11 +12,13 @@
 		<h:form>
 
 			<h1>Search Product</h1>
+			
+			<p:messages autoUpdate="true" closable="true"/>
 
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
-					<p:commandButton id="search" value="Ssearch"
-						outcome="/product/SearchProduct" />
+					<p:commandButton id="search" value="Search"
+						action="#{searchProductBean.search}" update="@form"/>
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
 					<p:button value="New" outcome="/product/RegisterProduct" />
@@ -26,10 +28,10 @@
 			<p:panelGrid columns="2" style="width: 100%; margin-top: 20px"
 				columnClasses="label, field">
 				<p:outputLabel value="SKU" for="sku" />
-				<p:inputText id="sku" size="20" />
+				<p:inputText id="sku" size="20" value="#{searchProductBean.filter.sku}"/>
 
 				<p:outputLabel value="Name" for="name" />
-				<p:inputText id="name" size="60" maxlength="80" />
+				<p:inputText id="name" size="60" maxlength="80" value="#{searchProductBean.filter.name}"/>
 			</p:panelGrid>
 			
 			<p:dataTable id="tableProducts" value="#{searchProductBean.filteredProducts}" var="product"
@@ -37,19 +39,22 @@
 				paginatorAlwaysVisible="false" paginatorPosition="bottom">
 				
 				<p:column headerText="SKU" style="text-align: center; width: 100px">
-					<h:outputText value="123"/>
+					<h:outputText value="#{product.sku}"/>
 				</p:column>
 				<p:column headerText="Name">
-					<h:outputText value="name test"/>
+					<h:outputText value="#{product.name}"/>
 				</p:column>
 				<p:column headerText="Category" style="width: 250px">
-					<h:outputText value="category test"/>
+					<h:outputText value="#{product.category.categoryFather.description}
+						- #{product.category.description}"/>
 				</p:column>
 				<p:column headerText="Unitary value" style="width: 120px; text-align: right">
-					<h:outputText value="R$ 100,00"/>
+					<h:outputText value="#{product.unitValue}">
+						<f:convertNumber type="currency"/>
+					</h:outputText>
 				</p:column>
 				<p:column headerText="Stock" style="width: 100px; text-align: center">
-					<h:outputText value="99"/>
+					<h:outputText value="#{product.qtdStock}"/>
 				</p:column>
 				<p:column style="width: 100px; text-align: center">
 					<p:button icon="ui-icon-pencil" title="Edit"/>

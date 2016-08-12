@@ -3,21 +3,25 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:o="http://omnifaces.org/ui">
 
-	<ui:define name="title">New Product</ui:define>
+	<ui:define name="title">#{registerProduct.isEditing ? 'Edit Product' : 'New Product'}</ui:define>
 		
 	<ui:define name="body">
 	<!-- Runs before page is rendered
 		sometimes it's better to fetch data here when page is created other than in class constructor, 
-			where it would be called everytime a object is created -->
+			where it would be called everytime a object is created. 
+		
+		Use Omnifaces' viewParam instead of Primefaces to avoid double set in param when ViewScoped is used
+			-->
 	<f:metadata>
-		<f:viewParam name="dummy" />
+		<o:viewParam name="product" value="#{registerProductBean.product}"/>
 		<f:event listener="#{registerProductBean.init}" type="preRenderView"/>
 	</f:metadata>
 	
 		<h:form>
-			<h1>New Product</h1>
+			<h1>#{registerProduct.isEditing ? 'Edit Product' : 'New Product'}</h1>
 
 			<p:messages autoUpdate="true" closable="true"/>
 

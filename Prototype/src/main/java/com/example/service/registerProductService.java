@@ -20,7 +20,7 @@ public class registerProductService implements Serializable {
 		
 		Product existing = productRepository.bySKU(product.getSku());
 		
-		if(existing != null){
+		if(existing != null && !existing.equals(product)){
 			throw new BusinessRuleExpection("Product with SKU already registered.");
 		}
 		

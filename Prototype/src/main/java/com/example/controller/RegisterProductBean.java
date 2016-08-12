@@ -54,7 +54,6 @@ public class RegisterProductBean implements Serializable {
 	
 	public void init(){								
 		System.out.println("begin transac...");
-
 		/*Good Practise
 		//This is not a good practise to create 'EntityManagerFactory' everytime the method is called. It will demand unnecessary proccess. 
 		//Create a class with 'ApplicationScoped' to handle only one time     //Persistence-unit name
@@ -63,6 +62,10 @@ public class RegisterProductBean implements Serializable {
 					
 		if(FacesUtil.isNotPostback()){
 			categoriesRoot = categoryRepository.listCategories();
+		}
+		
+		if(this.categoryFather != null){
+			loadSubcategory();
 		}
 	
 	}
@@ -76,9 +79,14 @@ public class RegisterProductBean implements Serializable {
 	public Product getProduct() {
 		return product;
 	}
+	
 
 	public void setProduct(Product product) {
 		this.product = product;
+		
+		if(this.product != null){
+			this.categoryFather = this.product.getCategory().getCategoryFather();
+		}
 	}
 
 	public List<Category> getCategoriesRoot() {
@@ -102,5 +110,10 @@ public class RegisterProductBean implements Serializable {
 		this.subcategory = subcategory;
 	}
 	
+	public boolean isEditing(){
+		boolean is = this.product.getId() != null;
+		System.out.println("Editing... " + is);
+		return is;
+	}
 	
 }

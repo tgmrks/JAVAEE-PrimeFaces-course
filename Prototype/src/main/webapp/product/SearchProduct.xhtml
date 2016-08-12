@@ -57,7 +57,10 @@
 					<h:outputText value="#{product.qtdStock}"/>
 				</p:column>
 				<p:column style="width: 100px; text-align: center">
-					<p:button icon="ui-icon-pencil" title="Edit"/>
+					<p:button icon="ui-icon-pencil" title="Edit"
+						outcome="/product/RegisterProduct">
+							<f:param name="product" value="#{product.id}"/>
+						</p:button>
 					<p:commandButton icon="ui-icon-trash" title="Delete" oncomplete="PF('cofirmDelete').show()"/>
 				</p:column>
 			</p:dataTable>
